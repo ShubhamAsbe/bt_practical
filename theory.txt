@@ -1,0 +1,599 @@
+------------Balance Check -------------------------------
+
+// SPDX-License-Identifier: UNLICENSED
+// Solidity program to retrieve address and balance of owner
+pragma solidity ^0.8.0;
+
+// Creating a contract
+contract MyContract {
+    // Private state variable
+    address private owner;
+
+    // Defining a constructor
+    constructor() {
+        owner = msg.sender;
+    }
+
+    // Function to get address of owner
+    function getOwner() public view returns (address) {
+        return owner;
+    }
+
+    // Function to return current balance of owner
+    function getBalance() public view returns (uint256) {
+        return owner.balance;
+    }
+}
+
+
+
+
+
+This is a simple Solidity smart contract written in the Ethereum programming language. Let me explain the different parts of the code:
+
+1. **SPDX-License-Identifier:** This is a comment that specifies the license under which the smart contract is released. In this case, it's the MIT license.
+
+2. **pragma solidity >=0.6.12 <0.9.0;** This line specifies the version of the Solidity compiler that should be used. The contract is intended to be compiled with a version greater than or equal to 0.6.12 and less than 0.9.0.
+
+3. **contract MyContract { ... }** This is the declaration of the smart contract named `MyContract`.
+
+4. **address private owner;** This line declares a private state variable named `owner` of type `address`. The `private` keyword means that this variable can only be accessed from within the contract.
+
+5. **constructor():** This is the constructor function. It is called only once when the contract is deployed. In this case, it sets the `owner` variable to the address of the account that deployed the contract (`msg.sender`).
+
+6. **function getOwner() public view returns (address):** This is a public function that allows external parties to query the `owner` address without modifying the state of the contract. It returns the value of the `owner` variable.
+
+7. **function getBalance() public view returns (uint256):** This is another public function that allows external parties to query the balance of the contract owner. It returns the current balance of the `owner` address.
+
+Overall, this contract is a simple example demonstrating the use of state variables, a constructor, and public view functions in Solidity. It doesn't have any functionality to modify the state or perform transactions, but it provides methods to inspect the owner's address and balance.
+
+Smart contracts are simply programs stored on a blockchain that run when predetermined conditions are met. They typically are used to automate the execution of an agreement so that all participants can be immediately certain of the outcome, without any intermediary's involvement or time loss.
+
+A smart contract is a self-executing contract with the terms of the agreement between buyer and seller being directly written into lines of code. The code and the agreements contained therein exist across a distributed, decentralized blockchain network. The code controls the execution, and transactions are trackable and irreversible. Smart contracts permit trusted transactions and agreements to be carried out among disparate, anonymous parties without the need for a central authority, legal system, or external enforcement mechanism.
+Every smart contract is owned by an address called as owner. A smart contract can know its ownerâ€™s address using sender property and its available balance using a special built-in object called msg.
+
+------------------------------------------------------------------------
+
+-------------------Employee -----------------------------------------------
+
+
+// SPDX-License-Identifier: UNLICENSED
+// Solidity program 
+// to store 
+// Employee Details
+pragma solidity ^0.8.0;
+  
+// Creating a Smart Contract
+contract StructDemo{
+  
+   // Structure of employee
+   struct Employee{
+       
+       // State variables
+       int empid;
+       string name;
+       string department;
+       string designation;
+   }
+   
+   Employee []emps;
+  
+   // Function to add 
+   // employee details
+   function addEmployee(
+     int empid, string memory name, 
+     string memory department, 
+     string memory designation
+   ) public{
+       Employee memory e
+         =Employee(empid,
+                   name,
+                   department,
+                   designation);
+       emps.push(e);
+   }
+  
+  // Function to get
+  // details of employee
+   function getEmployee(
+     int empid
+   ) public view returns(
+     string memory, 
+     string memory, 
+     string memory){
+       uint i;
+       for(i=0;i<emps.length;i++)
+       {
+           Employee memory e
+             =emps[i];
+           
+           // Looks for a matching 
+           // employee id
+           if(e.empid==empid)
+           {
+                  return(e.name,
+                      e.department,
+                      e.designation);
+           }
+       }
+       
+     // If provided employee 
+     // id is not present
+     // it returns Not 
+     // Found
+     return("Not Found",
+            "Not Found",
+            "Not Found");
+   }
+}
+
+
+
+
+This Solidity program is a smart contract named `StructDemo` that manages employee details using a structure called `Employee`. The `Employee` structure has fields for employee ID, name, department, and designation.
+
+The contract includes two main functions:
+
+1. **addEmployee:**
+   This function allows adding a new employee to the contract. It takes parameters for employee ID, name, department, and designation, creates an instance of the `Employee` structure with these details, and adds it to an array called `emps`.
+
+2. **getEmployee:**
+   This function retrieves the details of an employee based on their employee ID. It takes an employee ID as a parameter, searches the `emps` array for a matching ID, and if found, returns the employee's name, department, and designation. If the ID is not found, it returns "Not Found" for each field.
+
+In summary, this contract provides a way to store and retrieve employee details in a decentralized and transparent manner using the Ethereum blockchain. Users can add new employee records and query existing records based on employee ID.
+
+
+----------------------------------------------------------------------------------------------
+
+
+
+----------------------------Metamask info---------------------------------------------------
+
+
+
+# In swapping, the exchange of values between two different tokens takes place within the same Blockchain. Whereas, in Bridging, the exchange of value is done between two different tokens from different Blockchains
+
+-----------------------------------Types Blockchain----------------------------------------------------------
+
+
+Types of Blockchain
+There are four types of Blockchains - 
+
+1. Public Blockchain
+Types_of_Blockchain_2.
+
+It is a permissionless distributed ledger on which anybody can join and conduct transactions. 
+It is a non-restrictive form of the ledger in which each peer has a copy. This also means that anyone with an internet connection can access the public Blockchain.
+This user has access to historical and contemporary records and the ability to perform mining operations.
+These complex computations must be performed to verify transactions and add them to the ledger. 
+On the blockchain network, no valid record or transaction may be altered. Because the source code is usually open, anybody can check the transactions, uncover problems, and suggest fixes.
+Advantages of Public Blockchain -
+Trustable: Public Blockchain nodes do not need to know or trust each other because the proof-of-work procedure ensures no fraudulent transactions.
+Secure: A public network can have as many participants or nodes as it wants, making it a secure network. The higher the network's size, the more records are distributed, and the more difficult it is for hackers to hack the entire network.
+Open and Transparent: The data on a public blockchain is transparent to all member nodes. Every authorized node has a copy of the blockchain records or digital ledger.
+Disadvantages of Public Blockchain -
+Lower TPS: The number of transactions per second in a public blockchain is extremely low. This is because it is a large network with many nodes which take time to verify a transaction and do proof-of-work.
+Scalability Issues: Its transactions are processed and completed slowly. This harms scalability. Because the more we try to expand the network's size, the slower it will become.
+High Energy Consumption: The proof-of-work device is expensive and requires lots of energy. Technology will undoubtedly need to develop energy-efficient consensus methods.
+Uses of Public Blockchain -
+Voting: Governments can use a public blockchain to vote, ensuring openness and trust.
+Fundraising: Businesses or initiatives can use the public Blockchain to improve transparency and trust.
+Choose the Best Program in Blockchain!
+Professional Certificate Program in BlockchainEXPLORE PROGRAMChoose the Best Program in Blockchain!
+2. Private Blockchain
+Types_of_Blockchain_3
+
+A blockchain network operates in a private context, such as a restricted network, or is controlled by a single identity. 
+While it has a similar peer-to-peer connection and decentralization to a public blockchain network, this Blockchain is far smaller.
+They are often run on a small network within a firm or organization rather than open to anybody who wants to contribute processing power. 
+Permissioned blockchains and business blockchains are two more terms for them.
+Advantages of Private Blockchain - 
+Speed: Private Blockchain transactions are faster. This is because a private network has a smaller number of nodes, which shortens the time it takes to verify a transaction.
+Scalability: You can tailor the size of your private Blockchain to meet your specific requirements. This makes private blockchains particularly scalable since they allow companies to easily raise or decrease their network size.
+Disadvantages of Private Blockchain -
+Trust Building: In a private network, there are fewer participants than in a private network.
+Lower Security: A private blockchain network has fewer nodes or members, so it is more vulnerable to a security compromise.
+Centralization: Private blockchains are limited in that they require a central Identity and Access Management (IAM) system to function. This system provides full administrative and monitoring capabilities.
+Uses of Private Blockchain - 
+Supply Chain Management: A private blockchain can be used to manage a company's supply chain.
+Asset Ownership: A private blockchain can be used to track and verify assets.
+Internal Voting: Internal voting is also possible with a private blockchain.
+3. Hybrid Blockchain
+Types_of_Blockchain_4
+
+Organizations who expect the best of both worlds use a hybrid blockchain, which combines the features of both private and public blockchains. 
+It enables enterprises to construct a private, permission-based system alongside a public, permissionless system, allowing them to choose who has access to certain Blockchain data and what data is made public.
+In a hybrid blockchain, transactions and records are typically not made public, but they can be validated if necessary by granting access via a smart contract.
+Advantages of Hybrid Blockchain - 
+Secure: Hybrid Blockchain operates within a closed environment, preventing outside hackers from launching a 51 percent attack on the network.
+Cost-Effective: It also safeguards privacy while allowing third-party contact. Transactions are inexpensive and quick and scale better than a public blockchain network.
+Disadvantages of Hybrid Blockchain - 
+Lack of Transparency: Because information can be hidden, this type of blockchain isn't completely transparent.
+Less Incentive: Upgrading can be difficult, and users have no incentive to participate in or contribute to the network.
+Uses of Hybrid Blockchain - 
+Real Estate: Real estate companies can use hybrid networks to run their systems and offer information to the public.
+Retail: The hybrid network can also help retailers streamline their processes.
+Highly Regulated Markets: Hybrid blockchains are also well-suited to highly regulated areas like the banking sector.
+Choose the Best Program in Blockchain!
+Professional Certificate Program in BlockchainEXPLORE PROGRAMChoose the Best Program in Blockchain!
+4. Consortium Blockchain
+Types_of_Blockchain_5
+
+In the same way that a hybrid blockchain has both private and public blockchain features, a Consortium blockchain, also known as a federated blockchain, does.
+However, it differs because it involves various organizational members working together on a decentralized network.
+Predetermined nodes control the consensus methods in a consortium blockchain. 
+It has a validator node responsible for initiating, receiving, and validating transactions. Transactions can be initiated or received by member nodes.
+Advantages of Consortium Blockchain - 
+Secure: A consortium blockchain is more secure, scalable, and efficient than a public blockchain network. It, like private and mixed blockchains, has access controls.
+Disadvantages of Consortium Blockchain - 
+Lack of Transparency: The consortium blockchain has a lower degree of transparency. If a member node is infiltrated, it can still be hacked, and the Blockchain's rules can render the network inoperable.
+Uses of Consortium Blockchain -
+Banking and Payments: A consortium can be formed by a group of banks working together. They have control over which nodes will validate transactions.
+Research: A consortium blockchain can be employed to share research data and outcomes.
+Food Tracking: It is also apt for food tracking.
+
+
+
+Blockchain Technology Use Cases
+Here are the hottest Blockchain technology use cases categorized under specific industries/applications:
+
+1. Smart Contracts
+Smart contracts Blockchain-based contracts enforced in real-time. They are created as an agreement between two or more parties without the involvement of any intermediary. The contract exists across a distributed and decentralized Blockchain network. Smart contracts are now a staple in healthcare, real estate, and even for government agencies. 
+
+Use cases:
+
+BurstIQ (healthcare)
+
+BurstIQ used Big Data-based smart contracts to facilitate the transfer of sensitive medical data between patients and doctors. These contracts specify clear outlines and parameters for data sharing. They contain personalized health plans and other relevant details for individual patients.
+
+Check out upGradâ€™s Advanced Certification in Cloud Computing
+
+Propy (real estate)
+
+Propy is a real estate platform that uses a Blockchain-based title registry system. It automates all transactions for brokers, realtors, and their clients. Thanks to Blockchain tech, Propy makes title issuance instant and allows the buying/selling of properties via cryptocurrency.
+
+Explore our Popular Software Engineering Courses
+Master of Science in Computer Science from LJMU & IIITB	Caltech CTME Cybersecurity Certificate Program
+Full Stack Development Bootcamp	PG Program in Blockchain
+Executive PG Program in Full Stack Development
+View All our Courses Below
+Software Engineering Courses
+2. Internet of Things (IoT)
+The Internet of Things (IoT) industry is growing rapidly with billions of connected devices. The latest forecasts suggest that by 2030, thereâ€™ll be 50 billion devices in use globally. As this number continues to grow, it will increase vulnerabilities as hackers can easily breach your data through a single connected device. By integrating Blockchain technology in IoT devices, the possibility of data breaches can be reduced to a great extent.
+
+Use cases:
+
+HYPR (IoT/Cybersecurity)
+
+HYPR takes cybersecurity to the next level by combining smartphone technology with the highly secure FIDO token. This is the secret behind its True Passwordless Authentication feature. Through its decentralized credential solutions and biometric authentication, HYPR makes IoT devices tamper-proof.
+
+Xage (IoT/Cybersecurity)
+
+Xage boasts of being the worldâ€™s first Blockchain-based cybersecurity platform exclusively for catering to IoT firms functioning in energy, transportation, manufacturing, etc. Xageâ€™s technology can handle and manage billions of devices simultaneously. It extends zero trust identity, data security, and local/remote access for physical and digital operations in the cloud, OT, and IT.
+
+Also Read: Blockchain Technology Use Case in Banking
+
+3. Money Transfer
+Money transfer and payment processing are the most excellent Blockchain technology use cases. Blockchain tech enables lightning-fast transactions in real-time. This has already transformed the BFSI sector for good as it saves both time and money (mostly eliminates transaction fees charged by banks/financial institutions). 
+
+Use cases:
+
+Circle (FinTech)
+
+Circle uses USD Coin (USDC), the fastest-growing regulated Stablecoin, to help individuals run and establish their internet business. The platform offers around seven cryptocurrencies (Bitcoin, Monero, Zcash, etc.). Every month, Circle handles over $2 billion in cryptocurrency investments and exchanges. 
+
+Chainalysis (FinTech/Cybersecurity)
+
+Chainalysis offers Blockchain data and analysis reports to financial institutions, exchanges, and government agencies in 40 countries across the globe. Essentially, it focuses on helping institutions monitor cryptocurrency exchanges. Chainalysisâ€™s compliance and investigation tools enable you to monitor and identify fraudulent transactions, money laundering, and compliance violations, thereby building a reliable Blockchain-based economy.
+
+In-Demand Software Development Skills
+JavaScript Courses	Core Java Courses	Data Structures Courses
+Node.js Courses	SQL Courses	Full stack development Courses
+NFT Courses	DevOps Courses	Big Data Courses
+React.js Courses	Cyber Security Courses	Cloud Computing Courses
+Database Design Courses	Python Courses	Cryptocurrency Courses
+upGradâ€™s Exclusive Software Development Webinar for you â€“
+
+SAAS Business â€“ What is So Different?
+
+ 
+
+4. Personal Identity Security
+Personal identity theft and hacking are hot crimes in the cybercrime domain. In 2019, nearly 14.4 million people fell victim to identity fraud, which roughly translates to about 1 in 15 people. From hacking and violating personal files to forging documents, identity theft comes in many different forms. Blockchain can help combat this menace by storing crucial personal information (for example, social security numbers, birth certificates, address, PAN, etc.) on a decentralized and immutable ledger. 
+
+The existing centralized Web 2.0 encounters key concerns like vending personal data to third parties, identity theft, mixing of passwords and usernames, and more. So, it canâ€™t deploy a self-sovereign identity (SSI) for the users. However, blockchain can provide users with comprehensive control of their information in their ID and digital identities. So, Personal Identity Security is one of those use cases of blockchain that paves the way for SSI.
+
+Explore Our Software Development Free Courses
+Fundamentals of Cloud Computing	JavaScript Basics from the scratch	Data Structures and Algorithms
+Blockchain Technology	React for Beginners	Core Java Basics
+Java	Node.js for Beginners	Advanced JavaScript
+A self-governing identity can provide interoperability in the metaverse and convey oneâ€™s identity over various metaverse projects via Avatars. Personal Identity Security is among those blockchain technology use cases that significantly benefit the general population from a system that helps them recognize more securely. The solution for the same is a blockchain-based digital identity management mechanism.
+
+Large-scale corporations are familiar with the need. They are developing apps that facilitate the generation of digital identities of the general public and their workers. Though designing a global identity still needs a lot of time, the effort has already started in that direction.
+
+Read our Popular Articles related to Software Development
+Why Learn to Code? How Learn to Code?	How to Install Specific Version of NPM Package?	Types of Inheritance in C++ What Should You Know?
+Use cases:
+
+Civic (FinTech/Cybersecurity) 
+
+Civic is a blockchain-based platform integrated with a digital wallet that doubles as an identity card. It empowers people by giving them more control over their digital identities. It seeks to accomplish this goal through Blockchain-powered identity verification, privacy-focused health status, and peer-to-peer Bitcoin transfers. With Civic, you enjoy the flexibility to share your identity and personal information only with the companies you trust. 
+
+Evernym (IT)
+
+Evernym allows you to manage and control your identity on the Web by leveraging its Sovrin identity ecosystem. Sovrin stores your personal information, and for each transaction, it functions as a communication agent between you and entities demanding your private information and verifies the data in real-time. You can develop and deploy self-sovereign identity solutions by using Evernymâ€™s tech stack and market resources.
+
+5. Logistics
+Data siloing and lack of communication and transparency are the most pertinent issues of the logistics industry. Such obstacles become even more pronounced since thousands of companies operate in this domain, costing business time and money. This is where Blockchainâ€™s data transparency comes in handy. Blockchain tech can acknowledge data sources and automate processes, thereby building greater trust and transparency within the logistics industry.
+
+Blockchain technology is extensively used in the logistics industry for effectively tracking the goodâ€™s movement over multiple locations. The dataâ€™s transparent recording regarding the goods movement on the blockchain will help all stakeholders understand the precise location of goods. So, logistics is one of those blockchain technology use cases that guarantee effective management of all entities used in the transaction.
+
+Apart from the real-time tracking of goods, blockchain integration in the supply chain can ensure security for cash transactions. It also reduces delays, extra expenditure, and employeesâ€™ failures.
+
+Use cases:
+
+DHL (Supply chain management, Logistics)
+
+Everyone knows that DHL is a shipping giant DHL that has a global presence. It leverages Blockchain-powered logistics to track and record information related to shipments while maintaining the integrity of transactions. 
+
+Maersk (Supply chain management, Logistics)
+
+Another shipping giant, Maersk, has collaborated with IBM to bring Blockchain into the global trade scenario. Through this partnership, Maersk aims to leverage Blockchain techâ€™s potential to better understand and optimize supply chain management and digitally track products across international borders in real-time.
+
+Read: Blockchain in IoT (Internet of Things)
+
+6. Digital Media
+Digital media companies are burdened with many challenges like data privacy, piracy of intellectual property, royalty payments, and copyright infringement, among other issues. By incorporating Blockchain technology into the digital media infrastructure, companies can protect their intellectual property, maintain data integrity, target the right customers, and ensure that artists receive their royalty payments in due time. 
+
+Use cases:
+
+MadHive (Media & Advertising)
+
+MadHive is a New York bases advertising agency that delivers full-stack solutions to digital marketers. You can use MadHive to monitor, record, and create reports on customertarget=â€_blankâ€ rel=â€nofollowâ€ activity and stores all the information in a private Blockchain ledger. By offering real-time data monitoring and audience analytics reports, MadHive allows marketers to understand their target audiences better.
+
+Steem
+
+Steem is a social media or a â€œSocial Blockchainâ€ platform that encourages users to create original content by rewarding them with cryptocurrency. When you use Steem, you become a stakeholder of the platform with full control over your data. For each contribution you make, you earn cryptocurrency tokens. So far, Steem claims to have paid over US$ 59 billion to platform creators. 
+
+These real-world examples of Blockchain technology use cases prove that Blockchain is fast-permeating across different industrial sectors as we speak. Interestingly, Blockchain applications are both unique and diverse. Businesses that adopt Blockchain technology can take advantage of the transparency, security, and immutability that it is known for, thereby engaging in fair trade and delivering reliable products/services to customers. 
+
+7.Education:
+Blockchain technology can be seamlessly integrated into control systems and document storage. The key benefit of this blockchain use case is the incapability to modify data saved into the system. The information can be added but canâ€™t be overwritten. Moreover, the documentâ€™s legality can be easily confirmed because everybody can observe who wrote it and when.
+
+Comparatively, fewer people have used the benefit of blockchain in education. One of the pioneers is the University of Nicosia in Cyprus. This university used blockchain technology to store certificates and degrees. Moreover, it is the first university to accept cryptocurrencies as payment for tuition.
+
+8. Medical Field:
+The use of blockchain technology in the healthcare industry proves to be a lifesaver, especially in terms of data processing. The reason is the medical business has long been exploited. Since medical data is massive, blockchain technology is useful for a small amount of information.
+
+One of the best blockchain use cases in the medical field is the Healthureum system. Based on blockchain technology, it works as a tool to control and account for the data concerning modifications in the medical records. It means that the answer was for data to be saved outside the blocks, whereas the links directing to huge files will be saved on the blockchain.
+
+Different initiatives are available to manage the data encryption problems, like restricting the type of access to patient data or preparing a closed array on the blockchain with restricted access to a supervisory body or other regulatory units.
+
+Some blockchain case studies in the medical field:
+
+Ambrosus: This blockchain use case follows the custody chain of pharmaceuticals and clinical trials. Food and pharmaceutical firms can use it to optimize QA and supply chain visibility.
+ConnectingCare: It allows healthcare providers and patients to share data. Moreover, it allows all types of unique applications, ranging from cost calculation to the patientâ€™s potential to regulate their privacy to permitting users to sell their data for research.
+9. Entertainment:
+One of the most interesting and prevailing blockchain usecases is entertainment. Blockchain technology prevents gambling sanctions in several jurisdictions due to cryptocurrencyâ€™s non-recognition as property or cash.  Furthermore, blockchain has raised the curiosity of the music industry.
+
+Blockchain technology can store data on all transactions, encrypted data on finance, ownership rights, and smart contracts too. For example, Stem is one of the blockchain use cases in the entertainment sector. It is a blockchain-centred payment and distribution platform for audiovisual products. It helps you publish material, handle contracts, and do payments from a single place.
+
+Case Studies:
+
+Here are the blockchain usecases in entertainment:
+
+Plague Hunters: It is a free strategy game with an inbuilt Ethereum marketplace that uses NFT transactions for purchasing and selling weapons and the hunters.
+Beyond the Void: This game uses Ethereumâ€™s blockchain to permit players to purchase, sell, and sell â€œcosmetic in-game itemsâ€ via NFT transactions.
+ 10. Real Estate:
+The real estate market faces many issues, specifically connecting buyers and sellers. Currently, buyers need to meet the seller or brokers to finalize a deal.  The duration can range from a few months to a year. Furthermore, the paperwork can be a tedious task. It demands a lot of effort to complete the paperwork, which can still be impacted by incorrect data input. There are challenges while verifying the propertyâ€™s ownership. Moreover, frauds can happen in several ways, costing the buyer money.
+
+To overcome these challenges, a decentralized blockchain ledger is useful. It is, therefore, a valuable use case of blockchain. Firstly, it can enhance the rental property payments by simplifying leasing a property via the DLT. Moreover, it is cost-effective and guarantees effective decision-making for the buyer. Moreover, this use case of blockchain can help owners, tenants, service providers, and any other unit interact and verify ownership information or safely transact.
+
+Benefits of Real Estate use cases of blockchain
+
+Safe and smooth transactions
+Cost-effective
+Ownership verification
+A global marketplace for the real estate
+Eliminates middlemen(s)
+Famous Real Estate Blockchain Projects
+
+Propy: Allows purchase via blockchain
+Harbor: Helps liquidate assets
+StreetWire: Enhances technology adoption in the real estate market
+
+
+
+-------------------------------------------------------------------------------
+
+
+------------D- APP-------------------------------------------------------
+
+
+
+# Python program to create Blockchain
+
+# For timestamp
+import datetime
+
+# Calculating the hash
+# in order to add digital
+# fingerprints to the blocks
+import hashlib
+
+# To store data
+# in our blockchain
+import JSON
+
+# Flask is for creating the web
+# app and jsonify is for
+# displaying the blockchain
+from flask import Flask, jsonify
+
+
+class Blockchain:
+
+	# This function is created
+	# to create the very first
+	# block and set its hash to "0"
+	def __init__(self):
+		self.chain = []
+
+		self.create_block(proof=1, previous_hash='0')
+
+	# This function is created
+	# to add further blocks
+	# into the chain
+	def create_block(self, proof, previous_hash):
+		block = {'index': len(self.chain) + 1,
+				'timestamp': str(datetime.datetime.now()),
+				'proof': proof,
+				'previous_hash': previous_hash}
+		self.chain.append(block)
+		return block
+	
+	# This function is created
+	# to display the previous block
+	def print_previous_block(self):
+		return self.chain[-1]
+	
+	# This is the function for proof of work
+	# and used to successfully mine the block
+	def proof_of_work(self, previous_proof):
+		new_proof = 1
+		check_proof = False
+		
+		while check_proof is False:
+			hash_operation = hashlib.sha256(
+				str(new_proof**2 - previous_proof**2).encode()).hexdigest()
+			if hash_operation[:5] == '00000':
+				check_proof = True
+			else:
+				new_proof += 1
+				
+		return new_proof
+
+	def hash(self, block):
+		encoded_block = json.dumps(block, sort_keys=True).encode()
+		return hashlib.sha256(encoded_block).hexdigest()
+
+	def chain_valid(self, chain):
+		previous_block = chain[0]
+		block_index = 1
+		
+		while block_index < len(chain):
+			block = chain[block_index]
+			if block['previous_hash'] != self.hash(previous_block):
+				return False
+			
+			previous_proof = previous_block['proof']
+			proof = block['proof']
+			hash_operation = hashlib.sha256(
+				str(proof**2 - previous_proof**2).encode()).hexdigest()
+			
+			if hash_operation[:5] != '00000':
+				return False
+			previous_block = block
+			block_index += 1
+		
+		return True
+# Creating the Web
+# App using flask
+app = Flask(__name__)
+
+# Create the object
+# of the class blockchain
+blockchain = Blockchain()
+
+# Mining a new block
+@app.route('/mine_block', methods=['GET'])
+def mine_block():
+	previous_block = blockchain.print_previous_block()
+	previous_proof = previous_block['proof']
+	proof = blockchain.proof_of_work(previous_proof)
+	previous_hash = blockchain.hash(previous_block)
+	block = blockchain.create_block(proof, previous_hash)
+	
+	response = {'message': 'A block is MINED',
+				'index': block['index'],
+				'timestamp': block['timestamp'],
+				'proof': block['proof'],
+				'previous_hash': block['previous_hash']}
+	
+	return jsonify(response), 200
+
+# Display blockchain in json format
+@app.route('/get_chain', methods=['GET'])
+def display_chain():
+	response = {'chain': blockchain.chain,
+				'length': len(blockchain.chain)}
+	return jsonify(response), 200
+
+# Check validity of blockchain
+@app.route('/valid', methods=['GET'])
+def valid():
+	valid = blockchain.chain_valid(blockchain.chain)
+	
+	if valid:
+		response = {'message': 'The Blockchain is valid.'}
+	else:
+		response = {'message': 'The Blockchain is not valid.'}
+	return jsonify(response), 200
+
+
+# Run the flask server locally
+app.run(host='127.0.0.1', port=5000)
+Output (mine_block):
+{
+"index":2,
+"message":"A block is MINED",
+"previous_hash":"2d83a826f87415edb31b7e12b35949b9dbf702aee7e383cbab119456847b957c",
+"proof":533,
+"timestamp":"2020-06-01 22:47:59.309000"
+}
+Output (get_chain):
+{
+"chain":[{"index":1,
+"previous_hash":"0",
+"proof":1,
+"timestamp":"2020-06-01 22:47:05.915000"},{"index":2,
+"previous_hash":"2d83a826f87415edb31b7e12b35949b9dbf702aee7e383cbab119456847b957c",
+"proof":533,
+"timestamp":"2020-06-01 22:47:59.309000"}],
+"length":2
+}
+Output(valid):
+{"message":"The Blockchain is valid."}
+
+
+a Python program for creating a basic blockchain using Flask for the web application. The program defines a Blockchain class with methods for creating blocks, mining, proof of work, hashing, and checking the validity of the blockchain. Additionally, a Flask web application is created to expose endpoints for mining a block, displaying the blockchain, and checking its validity.
+
+Here's a breakdown of the main components:
+
+Blockchain Class:
+
+__init__: Initializes the blockchain with the first block (genesis block).
+create_block: Adds a new block to the chain.
+print_previous_block: Returns the information of the previous block.
+proof_of_work: Implements a basic proof-of-work algorithm to mine a block.
+hash: Computes the hash of a block.
+chain_valid: Checks the validity of the entire blockchain.
+Flask Web Application:
+
+/mine_block: Endpoint for mining a new block.
+/get_chain: Endpoint for displaying the entire blockchain.
+/valid: Endpoint for checking the validity of the blockchain.
+Execution:
+
+The Flask app is run locally on 127.0.0.1 at port 5000.
+You've provided example outputs for mining a block, displaying the blockchain, and checking its validity.
+Improvements:
+
+There's a typo in the import statement for the JSON module. It should be import json instead of import JSON.
+Ensure that the jsonify function is imported from flask (from flask import Flask, jsonify).
+It's important to note that this implementation is basic and lacks features like transactions, consensus mechanisms, and security considerations.
+Execution:
+
+To run the program, you need to have Flask installed. You can install it using pip install Flask.
+After installing Flask, you can run the program, and the blockchain will be accessible through the specified endpoints.
+Overall, the program provides a simple demonstration of a blockchain and its basic functionalities.
